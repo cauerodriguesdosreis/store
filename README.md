@@ -120,11 +120,10 @@ A API implementa diversas regras de negócio, entre elas:
 ```bash
 http://localhost:8080/produto/criar
 
-JSON:
 "nome":"Abacaxi",
 "descricao":"Abacaxi da Terra",
 "preco"1,
-"qtdEstoque":20,
+"qtdEstoque":20
 ```
 
 ## 📚 Aprendizados
