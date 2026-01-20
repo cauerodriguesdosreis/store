@@ -87,6 +87,7 @@ A API implementa diversas regras de negócio, entre elas:
 * **Bean Validation** – Validação de dados de entrada
 * **MySQL** – Banco de dados relacional
 * **Maven** – Gerenciamento de dependências
+* **Postman** - Ferramenta para validação de testes de API
 
 ---
 
