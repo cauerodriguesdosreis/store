@@ -117,13 +117,15 @@ A API implementa diversas regras de negócio, entre elas:
 
 4. Valide endpoints pelo Postman ou ferramentas similares:
 
-"http://localhost:8080/produto/criar"
+```bash
+http://localhost:8080/produto/criar
 
 JSON:
 "nome":"Abacaxi",
 "descricao":"Abacaxi da Terra",
 "preco"1,
 "qtdEstoque":20,
+```
 
 ## 📚 Aprendizados
 
