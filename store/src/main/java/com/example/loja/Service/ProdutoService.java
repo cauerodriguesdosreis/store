@@ -3,18 +3,16 @@ package com.example.loja.Service;
 import com.example.loja.DTO.Request.ProdutoRequestDTO;
 import com.example.loja.DTO.Response.ProdutoResponseDTO;
 import com.example.loja.Entity.ProdutoEntity;
-import com.example.loja.Exception.ProdutoComEstoqueException;
-import com.example.loja.Exception.ProdutoDuplicadoEAtivoException;
-import com.example.loja.Exception.ProdutoInativoException;
-import com.example.loja.Exception.ProdutoNaoEncontradoException;
+import com.example.loja.Exception.ProdutoException.ProdutoComEstoqueException;
+import com.example.loja.Exception.ProdutoException.ProdutoDuplicadoEAtivoException;
+import com.example.loja.Exception.ProdutoException.ProdutoInativoException;
+import com.example.loja.Exception.ProdutoException.ProdutoNaoEncontradoException;
 import com.example.loja.Repository.ProdutoRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Service
 public class ProdutoService {

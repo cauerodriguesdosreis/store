@@ -14,7 +14,5 @@ public interface ProdutoRepository extends JpaRepository <ProdutoEntity, Long> {
 
     Optional <ProdutoEntity> findByNomeAndAtivoTrue(String nome);
 
-    Optional <ProdutoEntity> findByNome(String nome);
-
     List <ProdutoEntity> findByNomeContainingAndAtivoTrue(String nome);
 }
