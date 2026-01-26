@@ -1,13 +1,14 @@
-# API de Produtos
+# API de Produtos e Usuários
 
-API REST desenvolvida em Java com Spring Boot para gerenciamento de produtos, com foco em boas práticas de backend, organização de código e aplicação de regras de negócio.
+API REST desenvolvida em Java com Spring Boot para gerenciamento de **produtos e usuários**, com foco em boas práticas de backend, organização de código e aplicação de regras de negócio.
 
 ---
 
 ## 📌 Visão Geral
 
-Este projeto consiste em uma API REST responsável pelo gerenciamento de produtos, permitindo operações de criação, consulta, atualização, desativação e exclusão.
-A API foi construída com foco em clareza arquitetural, separação de responsabilidades e validações de negócio, simulando cenários comuns encontrados em aplicações reais.
+Este projeto consiste em uma API REST responsável pelo gerenciamento de **produtos** e **usuários**, permitindo operações de criação, consulta, atualização, desativação e exclusão, de acordo com regras de negócio bem definidas.
+
+A API foi construída com foco em clareza arquitetural, separação de responsabilidades e validações de domínio, simulando cenários comuns encontrados em aplicações reais.
 
 ---
 
@@ -20,6 +21,7 @@ O principal objetivo deste projeto é consolidar conhecimentos em desenvolviment
 * Implementação de regras de negócio no Service
 * Tratamento global de exceções
 * Paginação e filtros em consultas
+* Modelagem de domínio com múltiplas entidades relacionadas
 
 ---
 
@@ -32,6 +34,7 @@ Algumas decisões importantes tomadas no projeto:
 * **Camada de Service** responsável por regras de negócio, validações e fluxo da aplicação
 * **Exceções personalizadas** combinadas com handler global para respostas padronizadas
 * **Paginação e filtros** para simular consultas eficientes em cenários reais
+* **Separação de domínios** (Produto e Usuário) com pacotes independentes e coesos
 
 Essas decisões visam facilitar manutenção, legibilidade e evolução do projeto.
 
@@ -50,11 +53,13 @@ O projeto está organizado da seguinte forma:
 * **Repository**
   Responsável pelo acesso aos dados, utilizando Spring Data JPA para abstração da persistência.
 
+Cada domínio (Produto e Usuário) possui seus próprios Controllers, Services, Repositories, DTOs e Exceptions.
+
 ---
 
 ## 🔗 Endpoints Principais
 
-Alguns dos principais endpoints disponíveis na API:
+### 📦 Produtos
 
 * `POST /produto/criar` – Criação de um novo produto
 * `GET /produto/listar` – Listagem de produtos com paginação
@@ -64,15 +69,28 @@ Alguns dos principais endpoints disponíveis na API:
 * `PATCH /produto/desativar/{id}` – Desativação lógica de produto
 * `DELETE /produto/{id}` – Exclusão de produto sem estoque
 
+### 👤 Usuários
+
+> 🔎 **Ponto de atenção**: aqui você pode detalhar melhor conforme sua implementação atual.
+
+* `POST /usuario/cadastrar` – Criação de um novo usuário
+* `GET /usuario/listar` – Listagem de usuários
+* `GET /usuario/{nome}` – Busca de usuário por nome
+* `PUT /usuario/atualizar/{id}` – Atualização de dados do usuário
+
 ---
 
 ## 🧪 Validações e Regras de Negócio
 
-A API implementa diversas regras de negócio, entre elas:
+### Produtos
 
 * Não é permitido criar produtos duplicados com o mesmo nome se estiverem ativos
 * Produtos inativos não podem ser atualizados
 * Produtos com estoque maior que zero não podem ser deletados
+* Validação de dados de entrada utilizando Bean Validation
+
+### Usuários (em desenvolvimento)
+
 * Validação de dados de entrada utilizando Bean Validation
 * Tratamento centralizado de erros com mensagens claras para o cliente
 
@@ -87,7 +105,7 @@ A API implementa diversas regras de negócio, entre elas:
 * **Bean Validation** – Validação de dados de entrada
 * **MySQL** – Banco de dados relacional
 * **Maven** – Gerenciamento de dependências
-* **Postman** - Ferramenta para validação de testes de API
+* **Postman** – Ferramenta para validação de testes de API
 
 ---
 
@@ -104,28 +122,21 @@ A API implementa diversas regras de negócio, entre elas:
 
 1. Clone o repositório:
 
-   ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
-   ```
+```bash
+git clone https://github.com/seu-usuario/seu-repositorio.git
+```
 
 2. Configure o banco de dados no `application.properties`
 
 3. Execute o projeto:
 
-   ```bash
-   mvn spring-boot:run
-   ```
-
-4. Valide endpoints pelo Postman ou ferramentas similares:
-
 ```bash
-http://localhost:8080/produto/criar
-
-"nome":"Abacaxi",
-"descricao":"Abacaxi da Terra",
-"preco"1,
-"qtdEstoque":20
+mvn spring-boot:run
 ```
+
+4. Teste os endpoints via Postman ou ferramenta similar.
+
+---
 
 ## 📚 Aprendizados
 
@@ -133,6 +144,7 @@ Durante o desenvolvimento deste projeto, foi possível aprofundar conhecimentos 
 
 * Organização e estruturação de projetos backend
 * Implementação de regras de negócio reais
+* Modelagem de domínio com múltiplas entidades
 * Uso correto de DTOs e exceções
 * Paginação e filtros com Spring Data JPA
 * Importância da documentação e clareza de código
@@ -143,6 +155,7 @@ Durante o desenvolvimento deste projeto, foi possível aprofundar conhecimentos 
 
 * Implementação de autenticação e autorização (Spring Security)
 * Criação de testes unitários e de integração
+* Relacionamento entre Usuários e Produtos (ex: criador/owner)
 * Containerização com Docker
 * Cache de consultas frequentes
 * Documentação automática com Swagger/OpenAPI
@@ -151,4 +164,4 @@ Durante o desenvolvimento deste projeto, foi possível aprofundar conhecimentos 
 
 ## 📌 Status do Projeto
 
-Projeto finalizado para fins de estudo e portfólio, aberto a evoluções e melhorias futuras.
+Projeto em evolução contínua para fins de estudo e portfólio, aberto a melhorias e novas funcionalidades.
